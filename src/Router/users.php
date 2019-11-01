@@ -1,8 +1,8 @@
 <?php
 
+use Slim\App;
 use App\Controllers\UserController;
 use App\Middlewares\Authentication;
-use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app) {
