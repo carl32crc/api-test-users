@@ -1,23 +1,24 @@
 <?php
 namespace App\Shared;
+
 use Ramsey\Uuid\Uuid as RamseyUuid;
 
-class Uuid 
+class Uuid
 {
-   private $value;
+    private $value;
 
-   public function __construct()
-   {
+    public function __construct()
+    {
         $this->value = $this->random();
-   }
+    }
 
-   private function random() : string
-   {
-       return RamseyUuid::uuid4()->toString();
-   }
+    private function random(): string
+    {
+        return RamseyUuid::uuid4()->toString();
+    }
 
-   public function value() : string
-   {
+    public function value(): string
+    {
         return $this->value;
-   }
+    }
 }

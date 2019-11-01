@@ -1,5 +1,6 @@
 <?php
 namespace App\Middlewares;
+
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use Slim\Psr7\Response;
@@ -20,7 +21,7 @@ class Authentication
 
         $token = $request->getHeaderLine('Authorization');
 
-        if($token !== '123456') {
+        if ($token !== '123456') {
             $response = new Response();
             return $response->withStatus(401);
         }

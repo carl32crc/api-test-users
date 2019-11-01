@@ -1,11 +1,10 @@
 <?php
 use Slim\App;
 
-
 return function (App $app) {
 
     $settings = $app->getContainer()
-                    ->get('settings');
+        ->get('settings');
     // Default
     $app->addBodyParsingMiddleware();
     $app->addErrorMiddleware($settings['displayErrors'], false, false);

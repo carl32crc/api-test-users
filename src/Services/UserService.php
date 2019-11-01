@@ -1,22 +1,22 @@
 <?php
 namespace App\Services;
-use Illuminate\Database\Capsule\Manager as DB;
+
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
-class UserService 
+class UserService
 {
-    public function getAll() : Collection
-    { 
+    public function getAll(): Collection
+    {
         return User::all();
     }
-    
-    public function get(string $id) : User
+
+    public function get(string $id): User
     {
-        return User::find($id);     
+        return User::find($id);
     }
 
-    public function create($user) : User
+    public function create($user): User
     {
         $entry = new User;
         $entry->create($user);
@@ -33,8 +33,6 @@ class UserService
 
     public function delete(string $id)
     {
-        User::destroy($id);     
+        User::destroy($id);
     }
-
-
 }

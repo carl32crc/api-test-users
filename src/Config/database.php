@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-return function($connection) {
+return function ($connection) {
     $capsule = new Capsule;
     $capsule->addConnection($connection);
     $capsule->setAsGlobal();
