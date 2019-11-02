@@ -14,12 +14,12 @@ class ValidatorStringTest extends TestCase
 
     public function testContainNumberChars() 
     {
-        $this->assertTrue($this->validatorString->containNumberOfChars('12345678', 8));
+        $this->assertTrue($this->validatorString->containNumberOfCharsOrMore('12345678', 8));
     }
 
     public function testNotContainNumberChars() 
     {
-        $this->assertFalse($this->validatorString->containNumberOfChars('123', 4));
+        $this->assertFalse($this->validatorString->containNumberOfCharsOrMore('123', 4));
     }
 
     public function testContainLowercase() 

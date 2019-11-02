@@ -1,10 +1,10 @@
 <?php
 namespace App\Middlewares;
 
+use Slim\Psr7\Response;
 use App\Shared\ValidatorString;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
-use Slim\Psr7\Response;
 
 class PasswordValidator
 {
@@ -31,7 +31,7 @@ class PasswordValidator
             $validatorString->containNumber($user->password),
             $validatorString->containLowercase($user->password),
             $validatorString->containUppercase($user->password),
-            $validatorString->containNumberOfChars($user->password, $numberOfChars),
+            $validatorString->containNumberOfCharsOrMore($user->password, $numberOfChars),
             $validatorString->containSymbol($user->password),
         ];
 

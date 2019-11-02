@@ -3,7 +3,7 @@ namespace App\Shared;
 
 class ValidatorString {
 
-    public function containNumberOfChars(string $string, int $numberOfChars) : bool
+    public function containNumberOfCharsOrMore(string $string, int $numberOfChars) : bool
     {
         return strlen($string) >= $numberOfChars;
     }
