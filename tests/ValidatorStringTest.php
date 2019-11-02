@@ -19,7 +19,7 @@ class ValidatorStringTest extends TestCase
 
     public function testNotContainNumberChars() 
     {
-        $this->assertFalse($this->validatorString->containNumberOfChars('123456', 4));
+        $this->assertFalse($this->validatorString->containNumberOfChars('123', 4));
     }
 
     public function testContainLowercase() 
