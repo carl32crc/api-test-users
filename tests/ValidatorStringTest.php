@@ -4,7 +4,7 @@ use App\Shared\ValidatorString;
 use PHPUnit\Framework\TestCase;
 
 
-class ExampleTest extends TestCase
+class ValidatorStringTest extends TestCase
 {
 
     public function setUp() : void
@@ -20,11 +20,5 @@ class ExampleTest extends TestCase
     public function testIncorrectContainNumberChars() 
     {
         $this->assertFalse($this->validatorString->containNumberChars('123456', 4));
-    }
-
-    public function testLowercaseString() 
-    {
-        $lowercase = 'lalaaka';
-        $this->assertEquals(strtolower($lowercase), $lowercase);
     }
 }
