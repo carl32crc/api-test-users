@@ -1,18 +1,30 @@
 <?php
 
+use App\Shared\ValidatorString;
 use PHPUnit\Framework\TestCase;
+
 
 class ExampleTest extends TestCase
 {
-    public function testEmpty() 
+
+    public function setUp() : void
     {
-        $string = '';
-        $this->assertEmpty($string);
+        $this->validatorString = new ValidatorString();
     }
 
-    public function testNotEmpty() 
+    public function testCorrectContainNumberChars() 
     {
-        $string = 'test';
-        $this->assertNotEmpty($string);
+        $this->assertTrue($this->validatorString->containNumberChars('12345678', 8));
+    }
+
+    public function testIncorrectContainNumberChars() 
+    {
+        $this->assertFalse($this->validatorString->containNumberChars('123456', 4));
+    }
+
+    public function testLowercaseString() 
+    {
+        $lowercase = 'lalaaka';
+        $this->assertEquals(strtolower($lowercase), $lowercase);
     }
 }
