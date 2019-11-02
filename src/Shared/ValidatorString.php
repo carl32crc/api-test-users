@@ -3,28 +3,28 @@ namespace App\Shared;
 
 class ValidatorString {
 
-    public function containNumberChars(string $string, int $numberOfChars) : bool
+    public function containNumberOfChars(string $string, int $numberOfChars) : bool
     {
-        return strlen($string) === $numberOfChars;
+        return strlen($string) >= $numberOfChars;
     }
 
-    public function containLowercase() : bool
+    public function containLowercase(string $string) : bool
     {
-
+        return (bool) preg_match('/[a-z]/', $string);
     }
 
-    public function containUppercase() : bool
+    public function containUppercase(string $string) : bool
     {
-
+        return (bool) preg_match('/[A-Z]/', $string);
     }
 
-    public function containNumber() : bool
+    public function containNumber(string $string) : bool
     {
-
+        return (bool) preg_match('/[0-9]/', $string);
     }
 
-    public function containSymbol() : bool
+    public function containSymbol(string $string) : bool
     {
-
+        return (bool) preg_match('/[^\w!@£]/', $string);
     }
 }

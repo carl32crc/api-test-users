@@ -2,7 +2,7 @@
 
 use Slim\App;
 use App\Controllers\UserController;
-use App\Middlewares\Authentication;
+use App\Middlewares\{Authentication, PasswordValidator};
 use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app) {
@@ -16,7 +16,8 @@ return function (App $app) {
 
         $group->get('/{id}', UserController::class . ':get');
 
-        $group->post('', UserController::class . ':create');
+        $group->post('', UserController::class . ':create')
+            ->add(new PasswordValidator);
 
         $group->put('/{id}', UserController::class . ':update');
 
