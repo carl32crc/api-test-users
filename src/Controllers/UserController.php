@@ -43,9 +43,19 @@ class UserController
 
     public function create(Request $request, Response $response, array $args)
     {
-        $result = $this->userService->create(
-            (object) $request->getParsedBody()
-        );
+        $user = (object) $request->getParsedBody();
+
+        $foundUserInSystem = $this->userService->getByEmail($user->email);
+
+        if($foundUserInSystem) {
+            $message = array('message' => 'This user is already registered.');
+            $response->getBody()->write(json_encode($message));
+            return $response
+                ->withHeader('Content-Type', 'application/json')
+                ->withStatus(200); 
+        }
+
+        $result = $this->userService->create($user);
 
         $response->getBody()->write($result->toJson());
 

@@ -16,6 +16,12 @@ class UserService
         return User::find($id);
     }
 
+    public function getByEmail(string $email): ?User
+    {
+        $user = User::where('email', $email)->first();
+        return $user ? $user : null; 
+    }
+
     public function create($user): User
     {
         $entry = new User;
