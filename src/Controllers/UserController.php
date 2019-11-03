@@ -18,8 +18,9 @@ class UserController
     public function getAll(Request $request, Response $response, array $args)
     {
         $query = $request->getQueryParams();
-
-        if($query) {
+        $page = $query['page'] ?? false;
+        $take = $query['take'] ?? false;
+        if($query && $page && $take) {
             $result = $this->userService->getAll($query['page'], $query['take']);
 
             $response->getBody()->write(json_encode($result));
