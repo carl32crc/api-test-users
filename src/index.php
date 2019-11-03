@@ -19,7 +19,10 @@ $globalMiddlewares = require __DIR__ . '/Middlewares/globalMiddlewares.php';
 $globalMiddlewares($app);
 
 // routes
+$signIn = require __DIR__ . '/Router/signIn.php';
 $usersRouter = require __DIR__ . '/Router/users.php';
+
+$signIn($app);
 $usersRouter($app);
 
 // api route not found

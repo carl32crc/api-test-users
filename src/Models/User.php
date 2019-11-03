@@ -15,7 +15,7 @@ class User extends Model
         $this->first_name = $user->firstName;
         $this->last_name = $user->lastName;
         $this->email = $user->email;
-        $this->password = $user->password;
+        $this->password = sha1($user->password);
     }
 
     public function updateBasicData($user)
