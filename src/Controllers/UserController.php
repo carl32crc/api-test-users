@@ -17,13 +17,23 @@ class UserController
 
     public function getAll(Request $request, Response $response, array $args)
     {
+        $query = $request->getQueryParams();
 
-        $result = $this->userService->getAll();
+        if($query) {
+            $result = $this->userService->getAll($query['page'], $query['take']);
 
-        $response->getBody()->write($result->toJson());
+            $response->getBody()->write(json_encode($result));
 
-        return $response->withHeader('Content-Type', 'application/json')
-            ->withStatus(200);
+            return $response->withHeader('Content-Type', 'application/json')
+                ->withStatus(200);
+        }
+
+        $message = array('message' => 'Incorrect query params, needed page and take params for works.');
+        $response->getBody()->write(json_encode($message));
+        return $response
+            ->withHeader('Content-Type', 'application/json')
+            ->withStatus(400);
+        
     }
 
     public function get(Request $request, Response $response, array $args)

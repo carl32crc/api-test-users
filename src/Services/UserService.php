@@ -1,14 +1,21 @@
 <?php
 namespace App\Services;
 
+use App\Helpers\DataCollection;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
 class UserService
 {
-    public function getAll(): Collection
+    public function getAll($page, $take): DataCollection
     {
-        return User::all();
+        $page--;
+        $result = User::orderBy('id', 'desc')
+                    ->skip($page * $take)
+                    ->take($take)
+                    ->get();
+        
+        return new DataCollection($result, User::count(), $page + 1);
     }
 
     public function get(string $id): User
