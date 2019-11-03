@@ -21,7 +21,7 @@ class UserController
         $page = $query['page'] ?? false;
         $take = $query['take'] ?? false;
         if($query && $page && $take) {
-            $result = $this->userService->getAll($query['page'], $query['take']);
+            $result = $this->userService->getAll($query['page'] ?? 1, $query['take'] ?? 3);
 
             $response->getBody()->write(json_encode($result));
 

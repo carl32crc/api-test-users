@@ -34,6 +34,7 @@ class UserService
         $entry = new User;
         $entry->create($user);
         $entry->save();
+        //unset($entry->password);
         return $entry;
     }
 
