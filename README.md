@@ -9,6 +9,7 @@
 
 > <p>composer install</p>
 > <p>composer start</p>
+> <p>create databasewith name usertest or rename value 'database' in file /Config/settings.php</p>
 
 ## Test coverage and init DB in this order
 
