@@ -11,6 +11,7 @@ class UserTable
         if(!Capsule::schema()->hasTable('users')) 
         {
             Capsule::schema()->create('users', function ($table) {
+                // TODO:: change string to varbinary if need improve performance(uuid) 
                 $table->string('id')->primary();
                 $table->string('first_name');
                 $table->string('last_name');
