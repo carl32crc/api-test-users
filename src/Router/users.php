@@ -10,7 +10,7 @@ return function (App $app) {
     $settings = $app->getContainer()
         ->get('settings');
 
-    $app->group($settings['basePath'] . 'users', function (RouteCollectorProxy $group) {
+    $app->group($settings['basePath'] . 'users', function (RouteCollectorProxy $group) use ($app) {
 
         $group->get('', UserController::class . ':getAll')->add(new Authentication);
 

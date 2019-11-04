@@ -1,4 +1,5 @@
 <?php
+
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
 
@@ -10,7 +11,6 @@ $dependencies();
 
 // slim instance
 $app = AppFactory::create();
-
 $database = require __DIR__ . '/Config/database.php';
 $database($app->getContainer()->get('settings')['db']);
 

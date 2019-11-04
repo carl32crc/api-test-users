@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Services\UserService;
+use App\Tables\UserTable;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -9,10 +10,12 @@ class UserController
 {
 
     private $userService;
+    private $createTable;
 
     public function __construct()
     {
         $this->userService = new UserService();
+        $this->createTable = new UserTable();
     }
 
     public function getAll(Request $request, Response $response, array $args)
@@ -54,6 +57,8 @@ class UserController
 
     public function create(Request $request, Response $response, array $args)
     {
+        $this->createTable->up();
+        
         $user = (object) $request->getParsedBody();
 
         $foundUserInSystem = $this->userService->getByEmail($user->email);
