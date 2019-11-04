@@ -18,6 +18,10 @@ $database($app->getContainer()->get('settings')['db']);
 $globalMiddlewares = require __DIR__ . '/Middlewares/globalMiddlewares.php';
 $globalMiddlewares($app);
 
+$app->options('/{routes:.+}', function ($request, $response, $args) {
+    return $response;
+});
+
 // routes
 $signIn = require __DIR__ . '/Router/signIn.php';
 $usersRouter = require __DIR__ . '/Router/users.php';
